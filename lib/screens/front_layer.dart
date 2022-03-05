@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:practica_1/utilities/api_data.dart';
 
 import '../bloc/quote_bloc.dart';
 
 class FrontLayer extends StatelessWidget {
   final String? hour;
+  final String? country;
 
-  FrontLayer({required this.hour});
+  FrontLayer({required this.hour, required this.country});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +16,18 @@ class FrontLayer extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
+            this.country != null
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "${this.country}",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
+                    ),
+                  )
+                : Text(""),
             Padding(
               padding: const EdgeInsets.only(top: 32.0),
               child: Text(
@@ -93,7 +107,7 @@ class FrontLayer extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.black,
         image: DecorationImage(
-          image: NetworkImage("https://picsum.photos/400/600"),
+          image: NetworkImage(ApiData.getImageApi()),
           fit: BoxFit.cover,
           alignment: Alignment.center,
           colorFilter: ColorFilter.mode(

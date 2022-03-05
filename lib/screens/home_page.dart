@@ -68,7 +68,9 @@ class _HomePageState extends State<HomePage> {
                   BlocProvider.of<QuoteBloc>(context)
                       .add(NewQuoteRequestEvent());
                   BlocProvider.of<TimezoneBloc>(context).add(
-                    NewTimeZoneRequestEvent(timezone: countries[index].region),
+                    NewTimeZoneRequestEvent(
+                        timezone: countries[index].region,
+                        country: countries[index].name),
                   );
                 },
               );
@@ -82,9 +84,12 @@ class _HomePageState extends State<HomePage> {
           if (state is SuccessTimeZoneState) {
             // "2022-03-04T18:05:09.945170-03:00"
             String dateStr = "${state.data["datetime"]}".substring(11, 18);
-            return FrontLayer(hour: "${dateStr}");
+            return FrontLayer(hour: "${dateStr}", country: state.country);
           } else {
-            return FrontLayer(hour: null);
+            return FrontLayer(
+              hour: null,
+              country: null,
+            );
           }
         },
       ),

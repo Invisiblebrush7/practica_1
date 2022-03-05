@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
+import 'package:practica_1/utilities/api_data.dart';
 part 'quote_event.dart';
 part 'quote_state.dart';
 
@@ -23,7 +24,7 @@ class QuoteBloc extends Bloc<QuoteEvent, QuoteState> {
   }
 
   Future _getData() async {
-    final String url = "https://zenquotes.io/api/random";
+    final String url = ApiData.getQuoteApi();
     Uri uri = Uri.parse(url);
     http.Response response = await http.get(uri);
     if (response.statusCode == 200) {

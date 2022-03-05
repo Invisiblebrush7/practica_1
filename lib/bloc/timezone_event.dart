@@ -9,8 +9,9 @@ abstract class TimezoneEvent extends Equatable {
 
 class NewTimeZoneRequestEvent extends TimezoneEvent {
   final String timezone;
-  NewTimeZoneRequestEvent({required this.timezone});
+  final String country;
+  NewTimeZoneRequestEvent({required this.timezone, required this.country});
 
   @override
-  List<Object> get props => [this.timezone];
+  List<Object> get props => [this.timezone, this.country];
 }

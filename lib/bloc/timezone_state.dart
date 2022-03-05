@@ -13,11 +13,11 @@ class LoadingTimeZoneState extends TimezoneState {}
 
 class SuccessTimeZoneState extends TimezoneState {
   final data;
-
-  SuccessTimeZoneState({required this.data});
+  final country;
+  SuccessTimeZoneState({required this.data, required this.country});
 
   @override
-  List<Object> get props => [data];
+  List<Object> get props => [data, country];
 }
 
 class ErrorTimeZoneState extends TimezoneState {
