@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
+      headerHeight: 400.0,
       appBar: AppBar(
         title: Text('Frase Diaria'),
         actions: [
